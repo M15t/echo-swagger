@@ -1,7 +1,6 @@
 package echoSwagger
 
 import (
-	"fmt"
 	"html/template"
 	"net/http"
 	"path/filepath"
@@ -162,8 +161,7 @@ func EchoWrapHandler(options ...func(*Config)) echo.HandlerFunc {
 
 		switch path {
 		case "":
-			fmt.Println("path is empty", matches[1])
-			// _ = c.Redirect(http.StatusMovedPermanently, matches[1]+"/"+"index.html")
+			_ = c.Redirect(http.StatusMovedPermanently, matches[1]+"index.html")
 		case "index.html":
 			_ = index.Execute(c.Response().Writer, config)
 		case "doc.json":
